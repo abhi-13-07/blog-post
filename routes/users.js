@@ -45,4 +45,10 @@ router.post('/register', formValidation, async function (req, res) {
 	}
 });
 
+router.get('/logout', function (req, res) {
+	req.logout();
+	req.flash('info', 'You were logged out');
+	res.redirect('/');
+});
+
 module.exports = router;

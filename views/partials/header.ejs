@@ -1,0 +1,14 @@
+<header>
+  <nav>
+    <h1>Blog-Post</h1>
+    <ul>
+      <% if (auth) { %>
+        <span>Hello, <%= user.name %></span>
+        <li><a href="/users/logout">Logout</a></li>
+      <% } else { %>
+        <li><a href="/users/login">Login</a></li>
+        <li><a href="/users/register">Register</a></li>
+      <% } %>
+    </ul>
+  </nav>
+</header>
