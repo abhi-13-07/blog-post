@@ -1,0 +1,15 @@
+<h2>Login Here</h2>
+
+<form method="POST">
+  <div>
+    <label for="">Email</label>
+    <input type="email" name="email" value="<%= typeof(username) !== "undefined" ? username : "" %>">
+  </div>
+  <div>
+    <label for="">password</label>
+    <input type="password">
+  </div>
+  <div>
+    <input type="submit" value="Login">
+  </div>
+</form>
