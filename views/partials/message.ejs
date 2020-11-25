@@ -11,6 +11,11 @@
     <p><%= messages.success %></p>
   </div>
 <% } %>
+<% if (messages.error) { %>
+  <div>
+    <p><%= messages.error %></p>
+  </div>
+<% } %>
 
 <% if (messages.info) { %>
   <div>

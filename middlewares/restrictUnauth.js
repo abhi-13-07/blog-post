@@ -6,3 +6,5 @@ function restrictUnAuth(req, res, next) {
 		res.redirect('/');
 	}
 }
+
+module.exports = restrictUnAuth;

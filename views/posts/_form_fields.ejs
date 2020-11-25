@@ -1,0 +1,33 @@
+<div>
+  <label for="">Title</label>
+  <input type="text" name="title" value="<%= typeof(title) !== "undefined" ? title : "" %>">
+</div>
+
+<div>
+  <label for="">Cover Image</label>
+  <input type="file" name="coverImage">
+</div>
+
+<div>
+  <label for="">Category</label>
+  <select name="category">
+    <option value="Programming">Programming</option>
+    <option value="Productivity">Productivity</option>
+    <option value="Nature">Nature</option>
+    <option value="General">General</option>
+  </select>
+</div>
+
+<div>
+  <label for="">Content</label>
+  <textarea name="body" id="" cols="60" rows="30"></textarea>
+</div>
+
+<div>
+  <div>
+    <input type="radio" name="public">
+    <label for="">Public</label>
+    <input type="radio" name="private">
+    <label for="">Private</label>
+  </div>
+</div>

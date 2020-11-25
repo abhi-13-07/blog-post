@@ -12,6 +12,7 @@ const passport = require('passport');
 
 const usersRouter = require('./routes/users');
 const indexRouter = require('./routes/index');
+const postsRouter = require('./routes/posts');
 
 const localStrategy = require('./config/localStrategy');
 
@@ -33,7 +34,7 @@ app.set('layout', 'layouts/layout');
 app.use(expressLayouts);
 app.use(express.urlencoded({ limit: '10mb', extended: false }));
 app.use(express.json());
-app.use(express.static(__dirname + '/public'));
+app.use(express.static('public'));
 app.use(
 	session({
 		secret: 'keyboard cat',
@@ -46,7 +47,12 @@ app.use(passport.session());
 app.use(flash());
 
 app.use('/', indexRouter);
+
+app.use('/users/:id', express.static('public'));
 app.use('/users', usersRouter);
+
+app.use('/posts/:id', express.static('public'));
+app.use('/posts', postsRouter);
 
 app.listen(process.env.PORT || 3000, () =>
 	console.log('Server Started on port 3000')
