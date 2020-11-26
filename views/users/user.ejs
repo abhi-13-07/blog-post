@@ -1,0 +1,12 @@
+<%- include("../partials/header") -%>
+<h2><%= user.name %></h2>
+<div>
+  <% posts.forEach(post => { %>
+    <div>
+      <h2><%= post.category %></h2>
+      <img height="400px" width="600px" src="<%= post.coverImageLink %>" alt="">
+      <h3><%= post.title %></h3>
+      <p><%= post.body.slice(0,120) + "..." %></p> <a href="/posts/<%= post.id %>">view More</a>
+    </div>
+  <% }) %>
+</div>

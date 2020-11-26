@@ -3,6 +3,8 @@ const Post = require('../models/Post');
 
 const restrictUnAuth = require('../middlewares/restrictUnauth');
 
+const renderPage = require('../helper/renderPage');
+
 router.get('/new', restrictUnAuth, function (req, res) {
 	res.render('posts/new');
 });
@@ -35,13 +37,8 @@ router.get('/category/:category', async function (req, res) {
 		}).populate('createdBy');
 		const params = {
 			posts: posts,
-			auth: false,
 		};
-		if (req.isAuthenticated()) {
-			params.auth = true;
-			params.user = req.user;
-		}
-		res.render('posts/index', params);
+		renderPage(req, res, 'posts/index', params);
 	} catch (err) {
 		console.log(err);
 		req.flash('info', 'Error While Loading Information');
@@ -56,13 +53,8 @@ router.get('/:id', async function (req, res) {
 			.exec();
 		const params = {
 			post: post,
-			auth: false,
 		};
-		if (req.isAuthenticated()) {
-			params.auth = true;
-			params.user = req.user;
-		}
-		res.render('posts/post', params);
+		renderPage(req, res, 'posts/post', params);
 	} catch (err) {
 		req.flash('error', err.message);
 		res.redirect('/');

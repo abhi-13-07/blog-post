@@ -1,10 +1,13 @@
 const router = require('express').Router();
 const User = require('../models/User');
+const Post = require('../models/Post');
 const bcrypt = require('bcrypt');
 const passport = require('passport');
 
 const formValidation = require('../middlewares/formValidation');
 const restrictAuth = require('../middlewares/restrictAuth');
+
+const renderPage = require('../helper/renderPage');
 
 router.get('/login', restrictAuth, function (req, res) {
 	res.render('users/login');
@@ -49,6 +52,20 @@ router.get('/logout', function (req, res) {
 	req.logout();
 	req.flash('info', 'You were logged out');
 	res.redirect('/');
+});
+
+router.get('/:id', async function (req, res) {
+	try {
+		const user = await User.findById(req.params.id);
+		const postsOfUser = await Post.find({ createdBy: user.id });
+		const params = {
+			user: user,
+			posts: postsOfUser,
+		};
+		renderPage(req, res, 'users/user', params);
+	} catch (err) {
+		res.redirect('/');
+	}
 });
 
 module.exports = router;
