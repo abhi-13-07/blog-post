@@ -28,12 +28,46 @@ router.post('/new', restrictUnAuth, async function (req, res) {
 	}
 });
 
-router.get('/:id', function (req, res) {
-	res.send(req.params.id);
+router.get('/category/:category', async function (req, res) {
+	const category = req.params.category;
+	try {
+		const posts = await Post.find({
+			category: new RegExp(category, 'i'),
+		}).populate('createdBy');
+		const params = {
+			posts: posts,
+			auth: false,
+		};
+		if (req.isAuthenticated()) {
+			params.auth = true;
+			params.user = req.user;
+		}
+		res.render('posts/index', params);
+	} catch (err) {
+		console.log(err);
+		req.flash('info', 'Error While Loading Information');
+		res.redirect('/');
+	}
 });
 
-router.get('/category/:category', function (req, res) {
-	res.send(req.params.category);
+router.get('/:id', async function (req, res) {
+	try {
+		const post = await Post.findById(req.params.id)
+			.populate('createdBy')
+			.exec();
+		const params = {
+			post: post,
+			auth: false,
+		};
+		if (req.isAuthenticated()) {
+			params.auth = true;
+			params.user = req.user;
+		}
+		res.render('posts/post', params);
+	} catch (err) {
+		req.flash('error', err.message);
+		res.redirect('/');
+	}
 });
 
 module.exports = router;
