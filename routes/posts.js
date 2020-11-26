@@ -20,8 +20,7 @@ router.post('/new', restrictUnAuth, async function (req, res) {
 		saveCover(post, coverImage);
 		const newPost = await post.save();
 		req.flash('info', 'Post Created Successfully');
-		// res.redirect(`posts/${newPost.id}`);
-		res.redirect('/');
+		res.redirect(`posts/${newPost.id}`);
 	} catch (err) {
 		req.flash('error', 'Error While creating Post');
 		res.redirect('posts/new');
