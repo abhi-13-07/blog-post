@@ -1,3 +1,14 @@
 <%- include("./partials/header") -%>
 <%- include("./partials/message") -%>
-<h2>Hello World</h2>
+<h2>Recently Added</h2>
+<div>
+  <% posts.forEach(post => { %>
+    <div>
+      <h3><%= post.category %></h3>
+      <img height="150px" width="100px" src="<%= post.coverImageLink %>" alt="cover image for <%= post.title %>">
+      <h4><%= post.title %></h4>
+      <p><%= post.body %></p>
+      <span><%= post.createdBy.name %></span>
+    </div>
+  <% }) %>
+</div>
