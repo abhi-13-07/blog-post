@@ -1,0 +1,8 @@
+<%- include("../partials/header") -%>
+<h2>Edit Post</h2>
+<%- include("../partials/message") -%>
+<form method="POST" action="/posts/edit/<%= post.id %>?_method=PUT">
+  <%- include("_form_fields") -%>
+  <a href="/">Cancel</a>
+  <input type="submit" value="edit">
+</form>

@@ -33,7 +33,7 @@ const postSchema = new mongoose.Schema({
 	isPrivate: {
 		type: Boolean,
 		required: true,
-		default: true,
+		default: false,
 	},
 });
 

@@ -56,14 +56,15 @@ router.get('/logout', function (req, res) {
 
 router.get('/:id', async function (req, res) {
 	try {
-		const user = await User.findById(req.params.id);
-		const postsOfUser = await Post.find({ createdBy: user.id });
+		const currentUser = await User.findById(req.params.id);
+		const postsOfUser = await Post.find({ createdBy: currentUser });
 		const params = {
-			user: user,
+			currentUser: currentUser,
 			posts: postsOfUser,
 		};
 		renderPage(req, res, 'users/user', params);
 	} catch (err) {
+		req.flash('error', err.message);
 		res.redirect('/');
 	}
 });

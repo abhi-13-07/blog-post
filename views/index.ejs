@@ -1,8 +1,10 @@
-<%- include("./partials/message") -%>
-<h2>Recently Added</h2>
-<div class="grid-container-2">
-  <% posts.forEach(post => { %>
-    <div>
+<%- include("./partials/header") -%>
+<div class="container">
+  <%- include("./partials/message") -%>
+  <h2>Recently Added</h2>
+  <div class="grid-container-2">
+    <% posts.forEach(post => { %>
+    <div class="grid">
       <h3><%= post.category %></h3>
       <img height="150px" width="100px" src="<%= post.coverImageLink %>" alt="cover image for <%= post.title %>">
       <h4><%= post.title %></h4>
@@ -10,5 +12,6 @@
       <a href="/posts/<%= post.id %>">View More</a>
       <span><%= post.createdBy.name %></span>
     </div>
-  <% }) %>
+    <% }) %>
+  </div>
 </div>

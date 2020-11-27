@@ -13,6 +13,14 @@ a {
 	text-decoration: none;
 }
 
+p {
+	font-family: 'Roboto', sans-serif;
+}
+
+.headings {
+	font-family: 'Poppins', sans-serif;
+}
+
 body {
 	background-color: var(--background-color);
 	padding: 0;
@@ -28,5 +36,9 @@ body {
 	display: grid;
 	align-items: center;
 	grid-template-columns: repeat(2, 1fr);
-	gap: 20px;
+	gap: 10px;
+}
+
+.grid {
+	max-width: 600px;
 }

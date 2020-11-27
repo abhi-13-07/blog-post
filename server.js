@@ -9,6 +9,7 @@ const mongoose = require('mongoose');
 const session = require('express-session');
 const flash = require('express-flash');
 const passport = require('passport');
+const methodOverride = require('method-override');
 
 const usersRouter = require('./routes/users');
 const indexRouter = require('./routes/index');
@@ -31,6 +32,7 @@ mongoose
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 app.set('layout', 'layouts/layout');
+app.use(methodOverride('_method'));
 app.use(expressLayouts);
 app.use(express.urlencoded({ limit: '10mb', extended: false }));
 app.use(express.json());

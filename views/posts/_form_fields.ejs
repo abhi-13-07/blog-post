@@ -1,6 +1,6 @@
 <div>
   <label for="">Title</label>
-  <input type="text" name="title" value="<%= typeof(title) !== "undefined" ? title : "" %>">
+  <input type="text" name="title" value="<%= typeof(post.title) !== "undefined" ? post.title : "" %>">
 </div>
 
 <div>
@@ -11,6 +11,9 @@
 <div>
   <label for="">Category</label>
   <select name="category">
+    <% if (typeof(post.category) !== "undefined") { %>
+     <option selected value=<%= post.category %>><%= post.category %></option>
+    <% } %>
     <option value="Programming">Programming</option>
     <option value="Productivity">Productivity</option>
     <option value="Nature">Nature</option>
@@ -20,14 +23,14 @@
 
 <div>
   <label for="">Content</label>
-  <textarea name="body" id="" cols="60" rows="30"></textarea>
+  <textarea name="body" id="" cols="60" rows="30"><%= typeof(post.body) !== "undefined" ? post.body : "" %></textarea>
 </div>
 
 <div>
   <div>
-    <input type="radio" name="public">
+    <input type="radio" id="public" name="postType" value="public">
     <label for="">Public</label>
-    <input type="radio" name="private">
+    <input type="radio" id="private" name="postType" value="private">
     <label for="">Private</label>
   </div>
 </div>
