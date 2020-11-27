@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Alata&family=Poppins&family=Righteous&family=Roboto&display=swap');
+@import './variable.css';
+@import './header.css';
+@import './button.css';
+
+/* general styles */
+* {
+	box-sizing: border-box;
+	font-family: sans-serif;
+}
+
+a {
+	text-decoration: none;
+}
+
+body {
+	background-color: var(--background-color);
+	padding: 0;
+	margin: 0;
+}
+
+.container {
+	padding: 1rem 2.5rem;
+	background-color: white;
+}
+
+.grid-container-2 {
+	display: grid;
+	align-items: center;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 20px;
+}

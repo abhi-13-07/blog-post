@@ -1,21 +1,24 @@
 <header>
-  <nav>
-    <h1>Blog-Post</h1>
-    <div>
-      <span><a href="/posts/category/nature">Nature</a></span>
-      <span><a href="/posts/category/productivity">Productivity</a></span>
-      <span><a href="/posts/category/programming">Programming</a></span>
-      <span><a href="/posts/category/general">General</a></span>
-
-    </div>
+  <nav class="header-nav">
+   <div>
+      <a class="header-nav-title" href="/">
+        <h1>Blog-Post</h1>
+      </a>
+      <div class="header-links">
+        <span><a href="/posts/category/nature">Nature</a></span>
+        <span><a href="/posts/category/productivity">Productivity</a></span>
+        <span><a href="/posts/category/programming">Programming</a></span>
+        <span><a href="/posts/category/general">General</a></span>
+      </div>
+   </div>
     <ul>
       <% if (auth) { %>
         <span>Hello, <%= user.name %></span>
-        <li><a href="/posts/new">Create a Post</a></li>
-        <li><a href="/users/logout">Logout</a></li>
+        <li><a class="btn btn-primary" href="/posts/new">Create a Post</a></li>
+        <li><a class="btn btn-dark" href="/users/logout">Logout</a></li>
       <% } else { %>
-        <li><a href="/users/login">Login</a></li>
-        <li><a href="/users/register">Register</a></li>
+        <li><a class="btn btn-dark-outline" href="/users/login">Login</a></li>
+        <li><a class="btn btn-dark" href="/users/register">Register</a></li>
       <% } %>
     </ul>
   </nav>
